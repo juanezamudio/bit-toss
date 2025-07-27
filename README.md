@@ -74,12 +74,24 @@ Open your browser and go to: [http://localhost:5173](http://localhost:5173)
 
 ## 📁 Project Structure
 
-- `src/`
-  - `pages/` – Main pages (Home, Explorer)
-  - `components/` – Reusable UI components
-  - `services/` – API client for block data
-  - `App.tsx` – App entry point & routing
-- `public/` – Static assets
+```text
+frontend/
+├── src/
+│   ├── components/    # Reusable UI components
+│   │   ├── Navbar.tsx
+│   │   └── Explorer.tsx
+│   ├── pages/        # Page components
+│   │   ├── Home.tsx
+│   │   └── Explorer.tsx
+│   ├── services/     # API and service layer
+│   │   └── api.ts
+│   └── App.tsx       # Root component
+├── public/           # Static assets
+└── index.html        # Entry HTML file
+```
+
+- **Home Page:** Odd/Even prediction game, recent block info, interactive UI
+- **Explorer Page:** Browse and inspect block details
 
 ---
 
@@ -102,27 +114,7 @@ MIT
 <p align="center">Made with ❤️ by BitToss Team @ Pleb.fi Miami Hackathon 2025</p>
 
 
-```
-frontend/
-├── src/
-│   ├── components/    # Reusable UI components
-│   │   ├── Navbar.tsx
-│   │   └── Explorer.tsx
-│   ├── pages/        # Page components
-│   │   ├── Home.tsx
-│   │   └── Explorer.tsx
-│   ├── services/     # API and service layer
-│   │   └── api.ts
-│   └── App.tsx       # Root component
-├── public/           # Static assets
-└── index.html        # Entry HTML file
-```
 
-## Main Components
-
-### Home Page
-- Features two interactive circular buttons for even/odd predictions
-- Displays current block information
 - Shows prediction history
 
 ### Explorer
