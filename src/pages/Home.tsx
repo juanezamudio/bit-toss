@@ -89,7 +89,8 @@ const Home: React.FC = () => {
     <div className="home">
       <div>
         <h1>Welcome to BitToss!</h1>
-        <p>Explore and interact with the Alkanes metaprotocol on the Bitcoin blockchain.</p>
+        <p>Welcome to Bit-Toss! This is a fun, interactive demo dApp where you can play<br></br>
+        an Odd/Even prediction game on live Bitcoin block data. 🎲✨</p>
       </div>
       
       <div className="block-buttons">
