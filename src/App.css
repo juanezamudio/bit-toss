@@ -26,6 +26,67 @@
   gap: 2rem;
 }
 
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 11;
+}
+
+.hamburger-bar {
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 1rem;
+    position: relative;
+  }
+  .navbar-brand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .navbar-hamburger {
+    display: flex;
+    margin-left: auto;
+  }
+  .navbar-menu {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background: #18181b;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 10;
+  }
+  .navbar-menu.open {
+    display: flex;
+  }
+}
+
+
+
 .navbar-menu a {
   color: #fff;
   text-decoration: none;
@@ -175,4 +236,77 @@
   background-color: #1a1a1a;
   border-radius: 8px;
   border: 1px solid #333;
+}
+
+/* Responsive Design (always keep at END of file) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .navbar-menu {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .home {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .block-buttons {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    align-items: center;
+  }
+  .block-button {
+    width: 100px;
+    height: 100px;
+    font-size: 1rem;
+  }
+  .block-info {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  .block-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    padding: 0.75rem;
+  }
+  .explorer {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  .navbar-brand a {
+    font-size: 1.1rem;
+  }
+  .block-button {
+    width: 70px;
+    height: 70px;
+    font-size: 0.9rem;
+    border-width: 2px;
+  }
+  .block-info {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  .block-item {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .block-main-info, .block-details {
+    gap: 0.1rem;
+  }
+  .explorer {
+    padding: 0.5rem;
+  }
 }
