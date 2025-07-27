@@ -97,6 +97,10 @@ PRs welcome! Have fun and toss some blocks! 🚀
 ## 📝 License
 MIT
 
+---
+
+<p align="center">Made with ❤️ by BitToss Team @ Pleb.fi Miami Hackathon 2025</p>
+
 
 ```
 frontend/
