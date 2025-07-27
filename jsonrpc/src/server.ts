@@ -1,7 +1,10 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import { AlkanesRpc } from "./rpc";
+import { BaseRpc } from "../../src.ts/base-rpc";
+import { AlkanesRpc } from "../../src.ts/rpc";
 import { config } from 'dotenv';
+
+config();
 
 interface Environment {
   PORT: string | number;
@@ -17,6 +20,9 @@ declare global {
 export function runServer() {
   const app = express();
   
+  // Parse JSON bodies
+  app.use(express.json());
+  
   // Configure CORS
   app.use(cors({
     origin: [
@@ -27,23 +33,32 @@ export function runServer() {
     allowedHeaders: ['Content-Type', 'Authorization']
   }));
 
-  const rpc = new AlkanesRpc();
+  const rpc = new AlkanesRpc({
+    url: process.env.DAEMON_RPC_ADDR || 'http://bitcoind:18443',
+    username: process.env.RPCUSER || 'bitcoinrpc',
+    password: process.env.RPCPASSWORD || 'bitcoinrpc'
+  });
 
   app.post('/api/*', async (req: Request, res: Response) => {
     try {
       const method = req.path.split('/').pop();
-      if (method && typeof rpc[method as keyof AlkanesRpc] === 'function') {
-        const result = await rpc[method as keyof AlkanesRpc](req.body);
-        res.json(result);
-      } else {
-        res.status(404).json({ error: 'Method not found' });
+      if (!method) {
+        res.status(400).json({ error: 'Method not specified' });
+        return;
       }
+
+      const result = await rpc._call({
+        method,
+        input: req.body
+      });
+
+      res.json(result);
     } catch (error) {
       res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }
   });
 
-  const port = Number(process.env.PORT) || 18888;
+  const port = Number(process.env.PORT || '18888');
   const host = process.env.HOST || 'localhost';
 
   app.listen(port, host, () => {

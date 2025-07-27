@@ -25,7 +25,7 @@ export function parseRunestone(v: string): any {
 
 export function parseRunestoneFromOpReturnHex(hex: string): any {
   const script = bitcoinjs.script.decompile(
-    new Uint8Array(Buffer.from(hex, 'hex'))
+    Buffer.from(hex, 'hex')
   );
   const payload: any = bytes.decipher(Buffer.concat(script.slice(2) as any));
   const result = parseLeb128Object(payload);

@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { u128, u32 } from "@magiceden-oss/runestone-lib/dist/src/integer";
 import { Option } from "@magiceden-oss/runestone-lib/dist/src/monads";
 import { ProtoruneEdict } from "./protoruneedict";

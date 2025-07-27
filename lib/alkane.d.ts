@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { u128 } from "@magiceden-oss/runestone-lib/dist/src/integer";
 import { CalldataWrapper } from "./calldata";
 export declare function lebEncodeU128(inputs: u128[]): Buffer;

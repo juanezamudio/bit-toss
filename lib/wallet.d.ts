@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { OutPoint, RuneOutput } from "./outpoint";
 /**
  * Protocol tag needs to be LEB128 encoded to pass into the protocol

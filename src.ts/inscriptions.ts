@@ -5,9 +5,9 @@ import * as psbt from "@scure/btc-signer/psbt";
 export const CUSTOM_SCRIPTS: Array<typeof ordinals.OutOrdinalReveal> = [ordinals.OutOrdinalReveal];
 
 export const constructRevealTxInput = (
-  programWasm: Uint8Array,
-  pubKey: Uint8Array,
-  privKey: Uint8Array
+  programWasm: Uint8Array | string,
+  pubKey: Uint8Array | string,
+  privKey: Uint8Array | string
 ): psbt.TransactionInputUpdate => {
   // This inscribes on first satoshi of first input (default)
   const inscription = {
@@ -18,12 +18,13 @@ export const constructRevealTxInput = (
     body: programWasm,
   };
 
+  // Create the reveal script
   const revealPayment = btc.p2tr(
-    undefined, // internalPubKey
-    ordinals.p2tr_ord_reveal(pubKey, [inscription]), // TaprootScriptTree
+    pubKey, // internalPubKey
+    undefined, // no taproot script tree
     undefined, // mainnet or testnet
-    false, // allowUnknownOutputs, safety feature
-    CUSTOM_SCRIPTS // how to handle custom scripts
+    true, // allowUnknownOutputs for custom reveal scripts
+    CUSTOM_SCRIPTS // custom scripts for handling reveals
   );
 
   // We need to send some bitcoins to this address before reveal.

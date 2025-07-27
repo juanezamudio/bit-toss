@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { FixedArray } from "@magiceden-oss/runestone-lib/dist/src/utils";
 import { u128 } from "@magiceden-oss/runestone-lib/dist/src/integer";
 import { Option } from "@magiceden-oss/runestone-lib/dist/src/monads";

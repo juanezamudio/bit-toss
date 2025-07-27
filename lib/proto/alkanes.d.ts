@@ -383,7 +383,7 @@ export declare namespace alkanes {
         get create_alkane(): AlkanesCreate;
         set create_alkane(value: AlkanesCreate);
         get has_create_alkane(): boolean;
-        get event(): "none" | "enter_context" | "exit_context" | "create_alkane";
+        get event(): "enter_context" | "exit_context" | "create_alkane" | "none";
         static fromObject(data: {
             enter_context?: ReturnType<typeof AlkanesEnterContext.prototype.toObject>;
             exit_context?: ReturnType<typeof AlkanesExitContext.prototype.toObject>;

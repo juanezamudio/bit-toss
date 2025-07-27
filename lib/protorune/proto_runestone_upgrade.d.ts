@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { ProtoruneRuneId } from "./protoruneruneid";
 import { ProtoruneEdict } from "./protoruneedict";
 import { Etching } from "@magiceden-oss/runestone-lib/dist/src/etching";

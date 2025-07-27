@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { OutPoint, RuneOutput } from "./outpoint";
 import { BaseRpc } from "./base-rpc";
 import { AlkaneTransfer } from "./alkane";
@@ -25,25 +26,25 @@ export declare class AlkanesRpc extends BaseRpc {
     runesbyheight({ height }: {
         height: number;
     }, blockTag?: BlockTag): Promise<{
-        runes: Array<{
+        runes: {
             runeId: string;
             name: string;
             divisibility: number;
             spacers: number;
             symbol: string;
-        }>;
+        }[];
     }>;
     protorunesbyheight({ height, protocolTag }: {
         height: number;
         protocolTag: bigint;
     }, blockTag?: BlockTag): Promise<{
-        runes: Array<{
+        runes: {
             runeId: string;
             name: string;
             divisibility: number;
             spacers: number;
             symbol: string;
-        }>;
+        }[];
     }>;
     protorunesbyoutpoint({ txid, vout, protocolTag }: {
         txid: any;

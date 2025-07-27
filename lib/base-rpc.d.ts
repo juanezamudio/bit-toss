@@ -23,12 +23,12 @@ export declare class BaseRpc {
     runesbyheight({ height }: {
         height: number;
     }, blockTag?: BlockTag): Promise<{
-        runes: Array<{
+        runes: {
             runeId: string;
             name: string;
             divisibility: number;
             spacers: number;
             symbol: string;
-        }>;
+        }[];
     }>;
 }

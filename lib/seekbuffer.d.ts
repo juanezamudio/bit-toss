@@ -1,3 +1,4 @@
+/// <reference types="node" />
 export declare class SeekBuffer {
     private buffer;
     seekIndex: number;

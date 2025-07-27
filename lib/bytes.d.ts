@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { SeekBuffer } from "./seekbuffer.js";
 import { alkanes as alkanes_protobuf } from "./proto/alkanes";
 export declare function toProtobufAlkaneTransfer(v: AlkaneTransfer): alkanes_protobuf.AlkaneTransfer;

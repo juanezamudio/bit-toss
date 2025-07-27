@@ -13,6 +13,8 @@
         "sourceMap": true,
         "outDir": "./lib",
         "strictNullChecks": false,
+        "skipLibCheck": true,
+        "allowJs": true,
         "declaration": true,
         "types": ["node"],
         "typeRoots": ["./node_modules/@types"],
