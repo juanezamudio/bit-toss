@@ -6,17 +6,20 @@
         "noUnusedParameters": false,
         "noUnusedLocals": false,
         "moduleResolution": "node",
-	"resolveJsonModule": true,
+        "resolveJsonModule": true,
         "target": "es2020",
         "noImplicitAny": false,
         "esModuleInterop": true,
         "sourceMap": true,
         "outDir": "./lib",
-	"strictNullChecks": false,
+        "strictNullChecks": false,
         "declaration": true,
-        "types": [
-            "node"
-        ]
+        "types": ["node", "express"],
+        "typeRoots": ["./node_modules/@types"],
+        "baseUrl": ".",
+        "paths": {
+            "*": ["node_modules/*"]
+        }
     },
     "include": [
         "./src.ts/*"

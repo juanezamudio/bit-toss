@@ -1,6 +1,18 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import { AlkanesRpc } from "./rpc";
+import { config } from 'dotenv';
+
+interface Environment {
+  PORT: string | number;
+  HOST: string;
+}
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv extends Environment {}
+  }
+}
 
 export function runServer() {
   const app = express();
@@ -17,17 +29,21 @@ export function runServer() {
 
   const rpc = new AlkanesRpc();
 
-  app.post('/api/*', async (req, res) => {
+  app.post('/api/*', async (req: Request, res: Response) => {
     try {
       const method = req.path.split('/').pop();
-      const result = await rpc[method](req.body);
-      res.json(result);
+      if (method && typeof rpc[method as keyof AlkanesRpc] === 'function') {
+        const result = await rpc[method as keyof AlkanesRpc](req.body);
+        res.json(result);
+      } else {
+        res.status(404).json({ error: 'Method not found' });
+      }
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
     }
   });
 
-  const port = process.env.PORT || 18888;
+  const port = Number(process.env.PORT) || 18888;
   const host = process.env.HOST || 'localhost';
 
   app.listen(port, host, () => {
@@ -35,6 +51,6 @@ export function runServer() {
   });
 }
 
-if (require.main === module) {
+if (typeof require !== 'undefined' && require.main === module) {
   runServer();
 }
