@@ -10,3 +10,4 @@ memory-bank/progress.md
 scripts/query-jsonrpc.mjs
 
 dist/
+.vercel
