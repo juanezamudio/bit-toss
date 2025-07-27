@@ -3,6 +3,7 @@ volumes:
   bitcoin-data:
   metashrew-data:
   secondary-data:
+  jsonrpc-data:
 services:
   bitcoind:
     image: bitcoind:alkanes
@@ -69,8 +70,11 @@ services:
       ESPLORA_PORT: 50010
       METASHREW_URI: http://metashrew:8080
       PORT: 18888
+      NODE_ENV: production
+    volumes:
+      - jsonrpc-data:/app/data
     ports:
-      - 18888:18888
+      - "18888:18888"
     restart: unless-stopped
   ord:
     build:
