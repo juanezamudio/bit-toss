@@ -1,63 +1,102 @@
-# Bit-Toss Frontend
+# 🚀 Bit-Toss Frontend
 
-A modern React-based frontend for the Bit-Toss application, allowing users to interact with blockchain blocks through an intuitive interface.
+Welcome to **Bit-Toss**! This is a fun, interactive demo dApp where you can play an Odd/Even prediction game on live Bitcoin block data. 🎲✨
 
-## Features
+---
 
-- 🎲 Interactive block prediction game
-- 🔄 Real-time blockchain block monitoring
-- 📊 Block history visualization
-- 🎯 Even/Odd block number prediction
-- 💫 Modern, responsive UI with animations
+## 🕹️ Features
 
-## Tech Stack
+- 🔮 **Odd/Even Prediction Game** – Guess if the last bit of the next block hash will be odd or even!
+- ⛓️ **Live Block Data** – Pulls real Bitcoin block data from Sandshrew.
+- 🏆 **Win/Lose Feedback** – See if your guess was right, plus a random BTC loss (just for fun).
+- 📊 **Block Explorer** – View recent blocks and their details.
+- 💻 **Modern UI** – Built with React + Vite for a smooth experience.
 
-- **Framework**: React with TypeScript
-- **Build Tool**: Vite
-- **Routing**: React Router
-- **Styling**: CSS Modules
-- **Deployment**: Vercel
+---
 
-## Getting Started
+## 📦 Tech Stack
 
-### Prerequisites
+- React (TypeScript)
+- Vite
+- React Router
+- CSS Modules
+- Vercel (deployment)
 
-- Node.js (v16 or higher)
-- npm (v7 or higher)
+---
 
-### Local Development
+## 🚦 How to Run Locally
 
-1. Clone the repository:
+### 1. Prerequisites
+- Node.js (v16+ recommended)
+- npm (v7+)
+
+### 2. Clone the Repo
 ```bash
-git clone https://github.com/juanezamudio/coin-flipper.git
-cd coin-flipper/frontend
+git clone https://github.com/juanezamudio/bit-toss.git
+cd bit-toss
 ```
 
-2. Install dependencies:
+### 3. Install Dependencies
 ```bash
 npm install
 ```
 
-3. Start the development server:
+### 4. Start the Dev Server
 ```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`
+Open your browser and go to: [http://localhost:5173](http://localhost:5173)
 
-### Building for Production
+---
 
-1. Create a production build:
-```bash
-npm run build
-```
+## 🏗️ Building & Previewing Production
 
-2. Preview the production build locally:
-```bash
-npm run preview
-```
+1. Build the app:
+   ```bash
+   npm run build
+   ```
+2. Preview the production build:
+   ```bash
+   npm run preview
+   ```
 
-## Project Structure
+---
+
+## 🎮 How to Play the Odd/Even Game
+1. Click **Odd** or **Even** to lock in your guess for the next block.
+2. When a new block arrives, the app checks the last bit of the block hash:
+    - If your guess matches, you win! 🎉
+    - If not, you lose (and see a random BTC loss for demo fun).
+3. Try again on the next block!
+
+---
+
+## 📁 Project Structure
+
+- `src/`
+  - `pages/` – Main pages (Home, Explorer)
+  - `components/` – Reusable UI components
+  - `services/` – API client for block data
+  - `App.tsx` – App entry point & routing
+- `public/` – Static assets
+
+---
+
+## 🌐 Live Demo
+
+Check it out live: [bit-toss-7634g8ipf-juanezamudios-projects.vercel.app](https://bit-toss-7634g8ipf-juanezamudios-projects.vercel.app)
+
+---
+
+## 🤝 Contributing
+PRs welcome! Have fun and toss some blocks! 🚀
+
+---
+
+## 📝 License
+MIT
+
 
 ```
 frontend/
