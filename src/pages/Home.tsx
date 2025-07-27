@@ -17,6 +17,13 @@ interface Block {
   difficulty: number;
 }
 
+const truncateHash = (hash: string, len = 8) => {
+  if (!hash) return '';
+  return hash.length > len * 2
+    ? `${hash.slice(0, len)}...${hash.slice(-len)}`
+    : hash;
+};
+
 const Home: React.FC = () => {
   const [activeButton, setActiveButton] = useState<'even' | 'odd' | null>(null);
   const [blocks, setBlocks] = useState<Block[]>([]);
@@ -25,7 +32,7 @@ const Home: React.FC = () => {
     const loadBlocks = async () => {
       try {
         const latestBlocks = await apiClient.getBlocks();
-        setBlocks(latestBlocks.slice(0, 3)); // Get last 3 blocks
+        setBlocks(latestBlocks.slice(0, 10)); // Get last 3 blocks
       } catch (error) {
         console.error('Error loading blocks:', error);
       }
@@ -85,11 +92,19 @@ const Home: React.FC = () => {
         <div className="block-list">
           {blocks.map((block) => (
             <div key={block.id} className="block-item">
-              <div>
-                <div className="block-hash">{block.id}</div>
+              <div className="block-main-info">
+                <div className="block-hash">x{truncateHash(block.id)}</div>
                 <div className="block-number">Block #{block.height}</div>
+                <div className="block-time">{formatTimestamp(block.timestamp * 1000)}</div>
               </div>
-              <div>{formatTimestamp(block.timestamp * 1000)}</div>
+              <div className="block-details">
+                <div><strong>Transactions:</strong> {block.tx_count}</div>
+                <div><strong>Size:</strong> {block.size} bytes</div>
+                <div><strong>Previous:</strong> {truncateHash(block.previousblockhash)}</div>
+                <div><strong>Nonce:</strong> {block.nonce}</div>
+                <div><strong>Bits:</strong> {block.bits}</div>
+                <div><strong>Difficulty:</strong> {block.difficulty}</div>
+              </div>
             </div>
           ))}
         </div>
