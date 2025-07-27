@@ -35,8 +35,8 @@ const Home: React.FC = () => {
   return (
     <div className="home">
       <div>
-        <h1>Welcome to ALKANES Protocol</h1>
-        <p>Explore and interact with the ALKANES metaprotocol on the Bitcoin blockchain.</p>
+        <h1>Welcome to BitToss!</h1>
+        <p>Explore and interact with the Alkanes metaprotocol on the Bitcoin blockchain.</p>
       </div>
       
       <div className="block-buttons">

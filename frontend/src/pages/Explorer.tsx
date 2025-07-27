@@ -30,7 +30,7 @@ const Explorer: React.FC = () => {
 
   return (
     <div className="explorer">
-      <h1>ALKANES Explorer</h1>
+      <h1>BitToss Explorer</h1>
       {loading ? (
         <p>Loading transactions...</p>
       ) : (

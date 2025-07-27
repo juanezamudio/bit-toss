@@ -4,7 +4,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <a href="/">ALKANES Protocol</a>
+        <a href="/">BitToss</a>
       </div>
       <div className="navbar-menu">
         <a href="/">Home</a>
