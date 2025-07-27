@@ -1,158 +1,148 @@
-# CoinFlipper - ALKANES Betting Protocol
+# Bit-Toss Frontend
 
-![Tests](https://img.shields.io/github/actions/workflow/status/AssemblyScript/assemblyscript/test.yml?branch=main&label=test&logo=github)
-![Publish](https://img.shields.io/github/actions/workflow/status/AssemblyScript/assemblyscript/publish.yml?branch=main&label=publish&logo=github)
+A modern React-based frontend for the Bit-Toss application, allowing users to interact with blockchain blocks through an intuitive interface.
 
-A decentralized betting platform built on the ALKANES metaprotocol, enabling peer-to-peer coin flipping games on Bitcoin. This repository contains both the backend protocol implementation and the frontend user interface.
+## Features
 
-**The ALKANES specification is hosted at** 👉🏻👉🏼👉🏽👉🏾👉🏿 [https://github.com/kungfuflex/alkanes/wiki](https://github.com/kungfuflex/alkanes/wiki)
+- 🎲 Interactive block prediction game
+- 🔄 Real-time blockchain block monitoring
+- 📊 Block history visualization
+- 🎯 Even/Odd block number prediction
+- 💫 Modern, responsive UI with animations
 
-#### NOTE: ALKANES does not have a network token
+## Tech Stack
 
-Protocol fees are accepted in terms of Bitcoin and compute is metered with the wasmi fuel implementation, for protection against DoS.
+- **Framework**: React with TypeScript
+- **Build Tool**: Vite
+- **Routing**: React Router
+- **Styling**: CSS Modules
+- **Deployment**: Vercel
 
-## Installation
+## Getting Started
 
-Install docker-ce with docker-compose. On Debian-based systems, a proper installation of docker-ce will include a docker-compose binary at /usr/libexec/docker/cli-plugins/docker-compose.
+### Prerequisites
 
-A complete environment for alkanes development against a live web application can be initialized in one command, invoked at the root of the project:
+- Node.js (v16 or higher)
+- npm (v7 or higher)
 
-```sh
-docker-compose up -d
+### Local Development
+
+1. Clone the repository:
+```bash
+git clone https://github.com/juanezamudio/coin-flipper.git
+cd coin-flipper/frontend
 ```
 
-This will launch a Bitcoin regtest instance, a keydb backend for a database, a metashrew process, and a metashrew-view process, preloaded with the `alkanes.wasm` binary produced from the Rust crate hosted at [https://github.com/kunguflex/alkanes-rs](https://github.com/kungfuflex/alkane-rs).
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+### Building for Production
+
+1. Create a production build:
+```bash
+npm run build
+```
+
+2. Preview the production build locally:
+```bash
+npm run preview
+```
 
 ## Project Structure
 
 ```
-├── frontend/          # React frontend application
-│   ├── src/          # Frontend source code
-│   │   ├── components/  # React components
-│   │   ├── services/   # API services
-│   │   └── utils/      # Utility functions
-├── jsonrpc/          # JSON-RPC server implementation
-├── docker/           # Docker configuration files
-├── integration/      # Integration tests
-└── src.ts/          # Core TypeScript implementation
+frontend/
+├── src/
+│   ├── components/    # Reusable UI components
+│   │   ├── Navbar.tsx
+│   │   └── Explorer.tsx
+│   ├── pages/        # Page components
+│   │   ├── Home.tsx
+│   │   └── Explorer.tsx
+│   ├── services/     # API and service layer
+│   │   └── api.ts
+│   └── App.tsx       # Root component
+├── public/           # Static assets
+└── index.html        # Entry HTML file
 ```
 
-## Features
+## Main Components
 
-- Decentralized peer-to-peer betting
-- Provably fair coin flips using Bitcoin's blockchain
-- Real-time game updates
-- Secure bet execution using ALKANES protocol
-- Responsive web interface
-- Testnet and Mainnet support
+### Home Page
+- Features two interactive circular buttons for even/odd predictions
+- Displays current block information
+- Shows prediction history
 
-## Prerequisites
-
-- Node.js >= 18
-- Docker and Docker Compose
-- Git
-
-## Local Development Setup
-
-1. Clone the repository:
-```sh
-git clone https://github.com/juanezamudio/coin-flipper.git
-cd coin-flipper
-```
-
-2. Install dependencies:
-```sh
-npm install
-cd frontend && npm install
-```
-
-3. Start the development environment:
-```sh
-# Start backend services
-docker compose up -d
-
-# Start frontend development server
-cd frontend
-npm run dev
-```
-
-4. Run integration tests:
-```sh
-ts-node integration/scripts/init.ts
-ts-node integration/genesis.spec.ts
-```
-
-## Configuration
-
-### Environment Variables
-
-Backend (`.env`):
-```env
-HOST=0.0.0.0
-PORT=18888
-NODE_ENV=development
-```
-
-Frontend (`.env`):
-```env
-VITE_API_URL=http://localhost:18888
-```
-
-### Docker Services
-
-- `bitcoind`: Bitcoin Core node (Regtest mode)
-- `metashrew`: ALKANES indexer
-- `memshrew`: P2P network service
-- `jsonrpc`: API server
-- `ord`: Ordinals server
-- `esplora`: Block explorer
-
-## API Endpoints
-
-- `POST /api/createBet`: Create a new bet
-- `POST /api/joinBet`: Join an existing bet
-- `GET /api/getBet/:id`: Get bet details
-- `GET /api/getResults/:id`: Get bet results
+### Explorer
+- Lists recent blocks and transactions
+- Provides detailed block information
+- Real-time updates for new blocks
 
 ## Deployment
 
-1. Build the frontend:
-```sh
-cd frontend
-npm run build
+### Deploy to Vercel
+
+1. Push your changes to GitHub:
+```bash
+git add .
+git commit -m "Your commit message"
+git push origin main
 ```
 
-2. Deploy the backend:
-```sh
-docker compose -f docker-compose.prod.yaml up -d
+2. Connect your repository to Vercel
+3. Configure the following environment variables:
+   - `VITE_API_URL`: Your API endpoint URL
+
+The application is currently deployed at: https://bit-toss-nine.vercel.app/
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_API_URL=http://localhost:18888  # Local development
 ```
+
+For production, update the URL in `.env.production`:
+
+```env
+VITE_API_URL=https://your-api-url.com
+```
+
+## Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Create production build
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Styling
+
+The application uses CSS modules for styling with a dark theme. Key features:
+- Responsive design
+- Modern UI elements with rounded corners
+- Smooth transitions and animations
+- Consistent dark color scheme
+- Interactive buttons with visual feedback
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Testing
-
-Run unit tests:
-```sh
-npm test
-```
-
-Run integration tests:
-```sh
-npm run test:integration
-```
-
-## Security
-
-This project is still in beta. Use at your own risk and never bet more than you can afford to lose.
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## License
 
-MIT License - see the [LICENSE](LICENSE) file for details
-
-Made with ❤️ by BitToss Team @ Pleb.fi Miami Hackathon 2025
+MIT License - feel free to use this code for your own projects.
